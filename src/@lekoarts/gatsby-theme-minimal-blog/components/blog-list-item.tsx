@@ -22,7 +22,7 @@ type BlogListItemProps = {
 
 const BlogListItem = ({ post, showTags = true }: BlogListItemProps) => (
   <Box mb={2}>
-    <TLink as={Link} to={post.slug} sx={{ fontSize: [2, 2, 3], color: `text` }}>
+    <TLink as={Link} to={post.slug} sx={{ fontSize: `20px`, color: `text` }}>
       {post.title}
     </TLink>
     <p sx={{ color: `secondary`, mt: 0, a: { color: `secondary` }, fontSize: [1, 1, 1] }}>
