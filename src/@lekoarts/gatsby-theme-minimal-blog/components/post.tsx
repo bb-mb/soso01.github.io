@@ -49,13 +49,13 @@ const Post = ({ data: { post } }: PostProps) => (
     </Heading>
     <p sx={{ color: `secondary`, mt: 3, a: { color: `secondary` }, fontSize: [2] }}>
       <time>{post.date}</time>
-      {post.tags && (
+      {/* {post.tags && (
         <React.Fragment>
-          {` - `}
+          {`, `}
           <ItemTags tags={post.tags} />
         </React.Fragment>
-      )}
-      {post.timeToRead && ` - `}
+      )} */}
+      {post.timeToRead && `, `}
       {post.timeToRead && <span>{post.timeToRead} min read</span>}
     </p>
     <section
