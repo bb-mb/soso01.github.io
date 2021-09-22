@@ -22,7 +22,7 @@ const Navigation = ({ nav }: NavigationProps) => {
   return (
     <React.Fragment>
       {nav && nav.length > 0 && (
-        <nav sx={{ "a:not(:last-of-type)": { mr: 3 }, fontSize: [1, `18px`], ".active": { color: `heading` } }}>
+        <nav sx={{ "a:not(:last-of-type)": { mr: 3 }, fontSize: [`14px`, `18px`], ".active": { color: `heading` } }}>
           {nav.map((item) => (
             <TLink key={item.slug} as={AsLink} to={replaceSlashes(`/${basePath}/${item.slug}`)}>
               {item.title}
