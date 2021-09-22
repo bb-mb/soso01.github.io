@@ -10,7 +10,6 @@ type Props = {
 }
 
 export default function MinimalBlogCoreHomepage({ ...props }: Props) {
-  console.log(props)
   const {
     data: { allPost },
   } = props

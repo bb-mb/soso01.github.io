@@ -10,6 +10,5 @@ type Props = {
 }
 
 export default function MinimalBlogCorePost({ ...props }: Props) {
-  console.log(props)
   return <Post {...props} />
 }
