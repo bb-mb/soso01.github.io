@@ -21,7 +21,11 @@ const Footer = () => {
       }}
     >
       <div>
-        &copy; {new Date().getFullYear()} by {siteTitle}. All rights reserved.
+        &copy; {new Date().getFullYear()} by <Link
+          href="https://github.com/soso01"
+        >
+          soso01
+        </Link>
       </div>
       <div>
         <Link
