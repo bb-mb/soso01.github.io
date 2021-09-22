@@ -28,7 +28,7 @@ const theme = merge(tailwind, {
     },
   },
   space: [0, 4, 8, 16, 32, 48, 64, 128, 256],
-  fontSizes: [12, 16, 18, 20, 24, 32, 48, 64, 96],
+  fontSizes: [12, 16, 18, 24, 28, 32, 48, 64, 96],
   fonts: {
     // body: `Nanum Gothic, Noto Sans KR`,
     body: `Noto Sans KR`,
