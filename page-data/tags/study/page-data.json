@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-lekoarts-gatsby-theme-minimal-blog-core-templates-tag-query-tsx",
+    "path": "/tags/study",
+    "result": {"data":{"allPost":{"nodes":[{"slug":"/post-2","title":"Post2","date":"08.11.2019","excerpt":"sdafsadf","timeToRead":1,"description":"Defence Against the Dark Arts (abbreviated as DADA) is a subject taught at Hogwarts School of Witchcraft and Wizardry and Ilvermorny School of Witchcraft and Wizardry.","tags":[{"name":"study","slug":"study"}]},{"slug":"/post-1","title":"Post1","date":"07.11.2019","excerpt":"sdafsadf","timeToRead":1,"description":"Defence Against the Dark Arts (abbreviated as DADA) is a subject taught at Hogwarts School of Witchcraft and Wizardry and Ilvermorny School of Witchcraft and Wizardry.","tags":[{"name":"study","slug":"study"}]}]}},"pageContext":{"slug":"study","name":"study","formatString":"DD.MM.YYYY"}},
+    "staticQueryHashes": ["2744905544","3090400250","318001574"]}
