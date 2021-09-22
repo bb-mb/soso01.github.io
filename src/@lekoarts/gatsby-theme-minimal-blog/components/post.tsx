@@ -68,7 +68,7 @@ const Post = ({ data: { post } }: PostProps) => (
       <MDXRenderer>{post.body}</MDXRenderer>
     </section>
     <p>
-     tags : <ItemTags tags={post.tags} />
+     tags - <ItemTags tags={post.tags} />
     </p>
   </Layout>
 )

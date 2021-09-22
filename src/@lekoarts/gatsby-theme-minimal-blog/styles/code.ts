@@ -218,7 +218,10 @@ const code = {
     right: [0, 0, 0, -3],
   },
   ".homeBanner": {
-    objectFit: 'cover'
+    objectFit: 'cover',
+    maxHeight: 300,
+    width: '100%',
+    borderRadius: 12
   }
 }
 

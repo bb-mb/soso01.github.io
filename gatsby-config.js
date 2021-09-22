@@ -54,8 +54,12 @@ module.exports = {
         // See: https://github.com/LekoArts/gatsby-themes/tree/master/examples/minimal-blog#changing-your-fonts
         web: [
           {
-            name: `Noto Sans Korean`,
+            name: `Noto Sans KR`,
             file: `https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap`,
+          },
+          {
+            name: `Nanum Gothic`,
+            file: `https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap`,
           },
         ],
       },

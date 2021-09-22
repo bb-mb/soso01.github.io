@@ -12,10 +12,11 @@ const theme = merge(tailwind, {
     secondary: `#5f6c80`,
     toggleIcon: tailwind.colors.gray[8],
     heading: tailwind.colors.black,
+    text: tailwind.colors.black,
     divide: tailwind.colors.gray[4],
     modes: {
       dark: {
-        text: tailwind.colors.gray[4],
+        text: tailwind.colors.gray[3],
         primary: tailwind.colors.purple[5],
         secondary: `#7f8ea3`,
         toggleIcon: tailwind.colors.gray[4],
@@ -26,8 +27,11 @@ const theme = merge(tailwind, {
       },
     },
   },
+  space: [0, 4, 8, 16, 32, 48, 64, 128, 256],
+  fontSizes: [12, 16, 18, 20, 24, 32, 48, 64, 96],
   fonts: {
-    body: `"Noto Sans Korean", -apple-system, BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"`,
+    // body: `Nanum Gothic, Noto Sans KR`,
+    body: `Noto Sans KR`,
   },
   styles: {
     root: {
@@ -46,7 +50,8 @@ const theme = merge(tailwind, {
       "--x-height-multiplier": 0.35,
       wordBreak: `break-word`,
       my: 3,
-      lineHeight: `1.5`,
+      lineHeight: `1.6`,
+      fontWeight: 400,
     },
     ul: {
       li: {
@@ -54,7 +59,7 @@ const theme = merge(tailwind, {
         "--baseline-multiplier": 0.179,
         "--x-height-multiplier": 0.35,
         my: 2,
-        lineHeight: `1.5`,
+        lineHeight: `1.6`,
       },
     },
     ol: {
@@ -63,7 +68,7 @@ const theme = merge(tailwind, {
         "--baseline-multiplier": 0.179,
         "--x-height-multiplier": 0.35,
         my: 2,
-        lineHeight: `1.5`,
+        lineHeight: `1.6`,
       },
     },
     title: {
@@ -74,12 +79,12 @@ const theme = merge(tailwind, {
     h1: {
       variant: `text.heading`,
       fontSize: [4, 4, 4, 5],
-      mt: 5,
+      mt: 6,
     },
     h2: {
       variant: `text.heading`,
       fontSize: [3, 3, 3, 4],
-      mt: 4,
+      mt: 5,
     },
     h3: {
       variant: `text.heading`,
