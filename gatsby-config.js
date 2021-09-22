@@ -5,11 +5,11 @@ const googleAnalyticsTrackingId = process.env.GOOGLE_ANALYTICS_ID;
 
 module.exports = {
   siteMetadata: {
-    siteTitle: `개발 블로그`,
-    siteTitleAlt: `devlog`,
-    siteHeadline: `devlog`,
+    siteTitle: `soso01 블로그`,
+    siteTitleAlt: `soso01 블로그`,
+    siteHeadline: `soso01 블로그`,
     siteUrl: `https://soso01.github.io`,
-    siteDescription: `개발 블로그`,
+    siteDescription: `soso01 블로그`,
     siteLanguage: `ko`,
     siteImage: `/banner.jpg`,
     author: `@lekoarts_de`,
