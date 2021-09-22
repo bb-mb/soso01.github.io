@@ -20,15 +20,15 @@ const Tags = ({ list }: PostsProps) => {
   return (
     <Layout>
       <Seo title="Tags" />
-      <Heading as="h1" variant="styles.h1">
+      <Heading as="h1" variant="styles.title">
         Tags
       </Heading>
-      <Box mt={[4, 5]}>
+      <Box mt={[3, 4]}>
         {list.map((listItem) => (
           <Flex key={listItem.fieldValue} mb={[1, 1, 2]} sx={{ alignItems: `center` }}>
             <TLink
               as={Link}
-              sx={{ variant: `links.listItem`, mr: 2 }}
+              sx={{ variant: `links.listItem`, mr: 2, fontSize: [2, 2, 3] }}
               to={replaceSlashes(`/${basePath}/${tagsPath}/${kebabCase(listItem.fieldValue)}`)}
             >
               {listItem.fieldValue} <span sx={{ color: `secondary` }}>({listItem.totalCount})</span>

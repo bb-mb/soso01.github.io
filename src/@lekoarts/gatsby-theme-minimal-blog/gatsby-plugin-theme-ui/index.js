@@ -1,9 +1,9 @@
-import { merge } from "theme-ui"
-import { transparentize } from "@theme-ui/color"
-import { tailwind } from "@theme-ui/presets"
+import { merge } from "theme-ui";
+import { transparentize } from "@theme-ui/color";
+import { tailwind } from "@theme-ui/presets";
 
 const theme = merge(tailwind, {
-  initialColorModeName: `light`,
+  initialColorModeName: `dark`,
   config: {
     useCustomProperties: true,
   },
@@ -27,7 +27,7 @@ const theme = merge(tailwind, {
     },
   },
   fonts: {
-    body: `"IBM Plex Sans", -apple-system, BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"`,
+    body: `"Noto Sans Korean", -apple-system, BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"`,
   },
   styles: {
     root: {
@@ -41,54 +41,59 @@ const theme = merge(tailwind, {
       MozOsxFontSmoothing: `grayscale`,
     },
     p: {
-      fontSize: [1, 1, 2],
-      letterSpacing: `-0.003em`,
-      lineHeight: `body`,
+      fontSize: [1, 2],
       "--baseline-multiplier": 0.179,
       "--x-height-multiplier": 0.35,
       wordBreak: `break-word`,
+      my: 3,
+      lineHeight: `1.5`,
     },
     ul: {
       li: {
-        fontSize: [1, 1, 2],
-        letterSpacing: `-0.003em`,
-        lineHeight: `body`,
+        fontSize: [1, 2],
         "--baseline-multiplier": 0.179,
         "--x-height-multiplier": 0.35,
+        my: 2,
+        lineHeight: `1.5`,
       },
     },
     ol: {
       li: {
-        fontSize: [1, 1, 2],
-        letterSpacing: `-0.003em`,
-        lineHeight: `body`,
+        fontSize: [1, 2],
         "--baseline-multiplier": 0.179,
         "--x-height-multiplier": 0.35,
+        my: 2,
+        lineHeight: `1.5`,
       },
+    },
+    title: {
+      variant: `text.heading`,
+      fontSize: [4, 4, 4, 5],
+      mt: 4,
     },
     h1: {
       variant: `text.heading`,
-      fontSize: [5, 6, 6, 7],
-      mt: 4,
+      fontSize: [4, 4, 4, 5],
+      mt: 5,
     },
     h2: {
       variant: `text.heading`,
-      fontSize: [4, 5, 5, 6],
+      fontSize: [3, 3, 3, 4],
       mt: 4,
     },
     h3: {
       variant: `text.heading`,
-      fontSize: [3, 4, 4, 5],
+      fontSize: [2, 2, 2, 3],
       mt: 4,
     },
     h4: {
       variant: `text.heading`,
-      fontSize: [2, 3, 3, 4],
+      fontSize: [3, 3, 3, 4],
       mt: 3,
     },
     h5: {
       variant: `text.heading`,
-      fontSize: [1, 2, 2, 3],
+      fontSize: [2, 2, 2, 3],
       mt: 3,
     },
     h6: {
@@ -201,6 +206,6 @@ const theme = merge(tailwind, {
       color: `text`,
     },
   },
-})
+});
 
-export default theme
+export default theme;

@@ -30,13 +30,14 @@ type TagProps = {
 
 const Tag = ({ posts, pageContext }: TagProps) => {
   const { tagsPath, basePath } = useMinimalBlogConfig()
+  const title = pageContext.name[0].toUpperCase() + pageContext.name.slice(1)
 
   return (
     <Layout>
       <Seo title={`Tag: ${pageContext.name}`} />
       <Flex sx={{ alignItems: `center`, justifyContent: `space-between`, flexFlow: `wrap` }}>
-        <Heading as="h1" variant="styles.h1" sx={{ marginY: 2 }}>
-          {pageContext.name}
+        <Heading as="h1" variant="styles.title" sx={{ marginY: 2 }}>
+          {title}
         </Heading>
         <TLink
           as={Link}
@@ -46,7 +47,7 @@ const Tag = ({ posts, pageContext }: TagProps) => {
           View all tags
         </TLink>
       </Flex>
-      <Listing posts={posts} sx={{ mt: [4, 5] }} />
+      <Listing posts={posts} sx={{ mt: [3, 4] }} />
     </Layout>
   )
 }

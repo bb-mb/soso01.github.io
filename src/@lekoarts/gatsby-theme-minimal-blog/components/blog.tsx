@@ -29,8 +29,8 @@ const Blog = ({ posts }: PostsProps) => {
     <Layout>
       <Seo title="Blog" />
       <Flex sx={{ alignItems: `center`, justifyContent: `space-between`, flexFlow: `wrap` }}>
-        <Heading as="h1" variant="styles.h1" sx={{ marginY: 2 }}>
-          Blog
+        <Heading as="h1" variant="styles.title" sx={{ marginY: 2 }}>
+          All
         </Heading>
         <TLink
           as={Link}
@@ -40,7 +40,7 @@ const Blog = ({ posts }: PostsProps) => {
           View all tags
         </TLink>
       </Flex>
-      <Listing posts={posts} sx={{ mt: [4, 5] }} />
+      <Listing posts={posts} sx={{ mt: [3, 4] }} />
     </Layout>
   )
 }

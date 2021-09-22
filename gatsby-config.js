@@ -5,7 +5,7 @@ const googleAnalyticsTrackingId = process.env.GOOGLE_ANALYTICS_ID;
 
 module.exports = {
   siteMetadata: {
-    siteTitle: `devlog`,
+    siteTitle: `개발 블로그`,
     siteTitleAlt: `devlog`,
     siteHeadline: `devlog`,
     siteUrl: `https://soso01.github.io`,
@@ -21,8 +21,20 @@ module.exports = {
       options: {
         navigation: [
           {
-            title: `Haha`,
-            slug: `/haha`,
+            title: `All`,
+            slug: `/blog`,
+          },
+          {
+            title: `Dev`,
+            slug: `/tags/dev`,
+          },
+          {
+            title: `Project`,
+            slug: `/tags/project`,
+          },
+          {
+            title: `Study`,
+            slug: `/tags/study`,
           },
           {
             title: `About`,
@@ -42,8 +54,8 @@ module.exports = {
         // See: https://github.com/LekoArts/gatsby-themes/tree/master/examples/minimal-blog#changing-your-fonts
         web: [
           {
-            name: `IBM Plex Sans`,
-            file: `https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap`,
+            name: `Noto Sans Korean`,
+            file: `https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap`,
           },
         ],
       },
@@ -58,9 +70,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `minimal-blog - @lekoarts/gatsby-theme-minimal-blog`,
-        short_name: `minimal-blog`,
-        description: `Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks such as live preview, line numbers, and code highlighting.`,
+        name: `개발 블로그`,
+        short_name: `개발 블로그`,
+        description: `soso01 개발 블로그`,
         start_url: `/`,
         background_color: `#fff`,
         theme_color: `#6B46C1`,

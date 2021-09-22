@@ -44,29 +44,32 @@ const Post = ({ data: { post } }: PostProps) => (
       pathname={post.slug}
       canonicalUrl={post.canonicalUrl}
     />
-    <Heading as="h1" variant="styles.h1">
+    <Heading as="h1" variant="styles.title">
       {post.title}
     </Heading>
-    <p sx={{ color: `secondary`, mt: 3, a: { color: `secondary` }, fontSize: [1, 1, 2] }}>
+    <p sx={{ color: `secondary`, mt: 3, a: { color: `secondary` }, fontSize: [2] }}>
       <time>{post.date}</time>
       {post.tags && (
         <React.Fragment>
-          {` — `}
+          {` - `}
           <ItemTags tags={post.tags} />
         </React.Fragment>
       )}
-      {post.timeToRead && ` — `}
+      {post.timeToRead && ` - `}
       {post.timeToRead && <span>{post.timeToRead} min read</span>}
     </p>
     <section
       sx={{
-        my: 5,
+        my: 4,
         ".gatsby-resp-image-wrapper": { my: [4, 4, 5], boxShadow: shadow.join(`, `) },
         variant: `layout.content`,
       }}
     >
       <MDXRenderer>{post.body}</MDXRenderer>
     </section>
+    <p>
+     tags : <ItemTags tags={post.tags} />
+    </p>
   </Layout>
 )
 
