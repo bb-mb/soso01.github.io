@@ -18,7 +18,7 @@ const Title = ({ text, children, as = `h2`, className = `` }: TitleProps) => (
       borderBottomWidth: `1px`,
       borderBottomColor: `divide`,
       pb: 3,
-      mb: 4,
+      mb: 3,
       flexFlow: `wrap`,
       boxSizing: `border-box`,
       display: `flex`,
