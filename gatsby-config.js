@@ -6,11 +6,11 @@ const googleAnalyticsTrackingId = process.env.GOOGLE_ANALYTICS_ID;
 module.exports = {
   siteMetadata: {
     siteTitle: `devlog`,
-    siteTitleAlt: `Minimal Blog - @lekoarts/gatsby-theme-minimal-blog`,
-    siteHeadline: `Minimal Blog - Gatsby Theme from @lekoarts`,
+    siteTitleAlt: `devlog`,
+    siteHeadline: `devlog`,
     siteUrl: `https://soso01.github.io`,
-    siteDescription: `Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks such as live preview, line numbers, and line highlighting.`,
-    siteLanguage: `en`,
+    siteDescription: `개발 블로그`,
+    siteLanguage: `ko`,
     siteImage: `/banner.jpg`,
     author: `@lekoarts_de`,
   },
@@ -21,22 +21,12 @@ module.exports = {
       options: {
         navigation: [
           {
-            title: `Blog`,
-            slug: `/blog`,
+            title: `Haha`,
+            slug: `/haha`,
           },
           {
             title: `About`,
             slug: `/about`,
-          },
-        ],
-        externalLinks: [
-          {
-            name: `Twitter`,
-            url: `https://twitter.com/lekoarts_de`,
-          },
-          {
-            name: `Homepage`,
-            url: `https://www.lekoarts.de?utm_source=minimal-blog&utm_medium=Starter`,
           },
         ],
       },
