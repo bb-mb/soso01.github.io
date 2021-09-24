@@ -47,7 +47,7 @@ const Post = ({ data: { post } }: PostProps) => (
     <Heading as="h1" variant="styles.title">
       {post.title}
     </Heading>
-    <p sx={{ color: `secondary`, mt: 3, a: { color: `secondary` }, fontSize: [2] }}>
+    <p sx={{ color: `secondary`, mt: [2, 3], a: { color: `secondary` }, fontSize: [1, 2] }}>
       <time>{post.date}</time>
       {/* {post.tags && (
         <React.Fragment>
