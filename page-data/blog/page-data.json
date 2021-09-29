@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-lekoarts-gatsby-theme-minimal-blog-core-templates-blog-query-tsx",
     "path": "/blog",
-    "result": {"data":{"allPost":{"nodes":[{"slug":"/블로그-개설","title":"블로그 개설","date":"22.09.2021","excerpt":"개츠비 블로그 개설했습니다 :) 공부한거나 사이드 프로젝트 위주로 포스팅 할게요. gatsby theme","timeToRead":1,"description":null,"tags":[{"name":"etc","slug":"etc"}]}]}},"pageContext":{"formatString":"DD.MM.YYYY"}},
+    "result": {"data":{"allPost":{"nodes":[{"slug":"/리액트-네이티브-i-18-n-사용-자동생성","title":"리액트 네이티브 i18n 사용, 자동생성","date":"30.09.2021","excerpt":"리액트 네이티브 앱 다국어 지원을 위해서 i18n 라이브러리를 사용해봤다. i18n이란? Internationalization 의 축약어이다 국제화를 위한 라이브러리 언어 번역 외에도 통화, ltr or rtl 등 지원 RN 적용 i18n…","timeToRead":1,"description":null,"tags":[{"name":"dev","slug":"dev"}]},{"slug":"/블로그-개설","title":"블로그 개설","date":"22.09.2021","excerpt":"개츠비 블로그 개설했습니다 :) 공부한거나 사이드 프로젝트 위주로 포스팅 할게요. gatsby theme","timeToRead":1,"description":null,"tags":[{"name":"etc","slug":"etc"}]}]}},"pageContext":{"formatString":"DD.MM.YYYY"}},
     "staticQueryHashes": ["2744905544","3090400250","318001574"]}
