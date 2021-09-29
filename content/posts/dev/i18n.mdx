@@ -1,0 +1,203 @@
+---
+title: 리액트 네이티브 i18n 사용, 자동생성
+date: 2021-09-30
+tags:
+  - dev
+---
+
+리액트 네이티브 앱 다국어 지원을 위해서 i18n 라이브러리를 사용해봤다.
+
+### i18n이란?
+
+- Internationalization 의 축약어이다
+- 국제화를 위한 라이브러리
+- 언어 번역 외에도 통화, ltr or rtl 등 지원
+
+## RN 적용
+
+i18n에 여러 기능이 있지만, 나는 언어 번역만을 위해서 사용했다.
+
+### 설정 초기화
+
+```javascript=
+// i18n.js
+import i18n from 'i18n-js';
+import * as RNLocalize from 'react-native-localize';
+
+import { DEFAULT_LOCALE, LANGUAGES, TEXT } from '@constants';
+import * as translations from './locales';
+
+export function setI18n() {
+  i18n.fallbacks = true;
+  i18n.translations = translations;
+  i18n.defaultLocale = DEFAULT_LOCALE;
+  i18n.locale =
+    RNLocalize.findBestAvailableLanguage(LANGUAGES)?.languageTag ||
+    DEFAULT_LOCALE;
+}
+
+// @constants
+export const DEFAULT_LOCALE = 'en';
+export const LANGUAGES = ['en', 'ko', 'ja', 'fr']; // 지원할 국가들
+export const TEXT = {
+  hello: '안녕하세요 {{name}}님',
+  scope1: {
+    scope2: {
+      message: '메세지1',
+      message2: '리액트 네이티브',
+    },
+  },
+};
+
+```
+
+LANGUAGES 상수에 지원할 언어 목록, TEXT 상수에 앱에서 사용한 문구들을 정의했다.
+
+i18n 설정 초기화는 setI18n 함수에서 정의하고, 스플래쉬 화면을 보여줄 때 setI18n 함수를 호출시켰다. fallback 여부, translations(번역된 언어 문구 객체), 사용자 locale 등을 설정한다.
+
+RN에서 사용자 locale은 react-native-localize 라이브러리를 사용해서 가져왔다. findBestAvailableLanguage 메서드는 인자로 넘겨준 배열의 언어 중에서 사용자에게 가장 적합한 언어를 리턴해준다고 한다. 어떤 알고리즘인지는 잘 모르겠다.
+
+### 사용
+
+```javascript=
+import { t } from 'i18n-js';
+
+t('scope1.scope2.message2') // 리액트 네이티브
+```
+
+기본적으로 위와 같이 t('key', options) 형태로 사용한다.
+`text.scope1.scope2.message2(options)` 와 같이 key를 argument로 넘겨주는 대신 객체에서 접근하는게 더 쓰기 편할 것 같아서 key가 바인딩된 t 함수를 value로 가지는 text 객체를 생성함
+
+```javascript=
+// i18n.js
+export const text = value2Translate(TEXT);
+
+export function value2Translate(translation, scope = []) {
+  return convertObj(translation, convertFunc);
+
+  function convertFunc({ key, value }) {
+    if (typeof value === 'object') {
+      return value2Translate(value, [...scope, key]);
+    }
+    return makeTranslate([...scope, key].join('.'));
+  }
+}
+
+function convertObj(obj, convertFunc) {
+  return Object.keys(obj).reduce((acc, key) => {
+    return { ...acc, [key]: convertFunc({ key, value: obj[key] }) };
+  }, {});
+}
+
+function makeTranslate(key) {
+  return options => i18n.t(key, options);
+}
+
+// Home.js
+import React from 'react';
+
+import { text } from '@i18n';
+import * as S from './Home.styled';
+
+function Home() {
+  return (
+    <S.Wrap>
+      <S.StyledText>{text.hello({ name: 'kim' })}</S.StyledText>
+      <S.StyledText>{text.scope1.scope2.message2()}</S.StyledText>
+    </S.Wrap>
+  );
+}
+
+export default Home;
+```
+
+그리고 {{name}} 은 Interpolation 기능으로 options객체 name의 value로 교체된다.
+
+### 실행 화면
+
+- 한국
+  ![한국](https://i.imgur.com/uCzu6PB.png)
+- 프랑스
+  ![프랑스](https://i.imgur.com/eoFtvMY.png)
+
+잘 작동함
+
+## 구글 번역 api로 자동생성
+
+TEXT 상수에서 문구를 한번만 정의하고, 언어별로 번역된 파일은 자동 생성시키기 위해 구글 클라우드 api를 사용했다. 월 요청 50만건까지 무료라서 부담없이 사용할 수 있었다.
+
+```javascript=
+// googleTranslate.js
+const { Translate } = require('@google-cloud/translate').v2;
+const fs = require('fs');
+const path = require('path');
+
+import { LANGUAGES, TEXT } from '@constants';
+import { googleTranslateKey } from './key';
+
+// Instantiates a client
+const translate = new Translate({ key: googleTranslateKey });
+
+(async function run() {
+  saveLocaleJson();
+  saveLocaleIndexJs();
+})();
+
+function saveLocaleIndexJs() {
+  fs.writeFileSync(
+    path.resolve(__dirname, '../src/i18n/locales/index.js'),
+    LANGUAGES.reduce(
+      (acc, lang) =>
+        acc + `export { default as ${lang} } from './${lang}.json';\n`,
+      '',
+    ),
+  );
+}
+
+function saveLocaleJson() {
+  LANGUAGES.forEach(async lang => {
+    const result = await translateObj(TEXT, lang);
+    fs.writeFileSync(
+      path.resolve(__dirname, `../src/i18n/locales/${lang}.json`),
+      JSON.stringify(result),
+    );
+  });
+}
+
+async function translateObj(obj, lang) {
+  const result = {};
+
+  for (const [key, value] of Object.entries(obj)) {
+    result[key] =
+      typeof value === 'object'
+        ? await translateObj(value, lang)
+        : deleteSpanTag(
+            (await translate.translate(addSpanTag(value), lang))[0],
+          );
+  }
+  return result;
+}
+
+function addSpanTag(text) {
+  return text.replaceAll(/{{[^{}]+}}/g, '<span translate="no">$&</span>');
+}
+
+function deleteSpanTag(text) {
+  return text.replaceAll(/<\/?span[^>]*>/g, '');
+}
+
+```
+
+TEXT 객체의 문구를 언어별로 번역하고, fs 모듈로 직접 json 파일을 생성했다. 리액트 네이티브에서 동적으로 require 경로를 설정하니 에러가 나서 언어별로 생성한 json을 export 하는 index.js도 직접 생성했다. 아마 빌드타임에 require 경로가 정해져야 되는 듯하다.
+
+{{name}} 과 같은 interpolation 구문에서 키값(name)은 번역되지 않도록 번역 전에`<span translate="no">` 태그로 감싸고, 번역후에는 span 태그를 삭제시켰다.
+
+### 실행
+
+위 코드를 node로 실행시키면 된다.
+
+![](https://i.imgur.com/NfQSA53.png)
+
+잘 작동 됨
+
+깃헙 - https://github.com/soso01/react-native-boilerplate
